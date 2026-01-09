@@ -1,4 +1,4 @@
-# Web-scrapper
+# Web-scraper
 a CLI web scapper app in python
 
 # Rationality
