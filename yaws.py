@@ -2,7 +2,6 @@
 from bs4 import BeautifulSoup
 import requests
 
-#todo
 def website_cloning(param):
     create_html = open("clone_file.html", "w")
     create_html.write(param.prettify())
@@ -24,11 +23,11 @@ def fetch_tag_contents(tags, param):
             print(text.get_text(strip=True))
             file_txt += (text.get_text(strip=True)+ "\n")
 
-    file_option = input("Do you wish to write this to a file ? (y/n): ")
-    if file_option == "y" or file_option == "Y":
+    file_option = input("Do you wish to write this to a file ? (y/n): ").lower()
+    if file_option == "y":
         create_txt.write(file_txt)
         print("File created ! \n")
-    elif file_option == 'n' or file_option == "N":
+    elif file_option == 'n':
         return
 
 #-----------------------------------------------------------------------------------------
@@ -43,6 +42,7 @@ __   __ ___        ______
 
 print(banner)
 print("Yet Another Web-Scraper")
+print("\033]8;;https://github.com/Mechaspirit1\033\\A tool by Pablo Loschi (Mechaspirit1)\033]8;;\033\\")
 
 while True:
     try:
@@ -59,19 +59,19 @@ while True:
 
         if mode_select == 1:
             print(soup.prettify())
-            option = input("Do you wish to write this to a file ? (y/n): ")
-            if option == "y" or option == "Y":
+            option = input("Do you wish to write this to a file ? (y/n): ").lower()
+            if option == "y":
                 website_cloning(soup)
                 print("Cloning done ! \n")
-            elif option == "n" or option == "N":
+            elif option == "n":
                 print("Operation halted \n")
             else:
                 print("Invalid command !")
 
-            break_point = input("Do you wish to exit the program ? (y/n): ")
-            if break_point == "y" or break_point == "Y":
+            break_point = input("Do you wish to exit the program ? (y/n): ").lower()
+            if break_point == "y":
                 break
-            elif break_point == "n" or break_point == "N":
+            elif break_point == "n":
                 continue
             else:
                 print("Invalid Command !")
@@ -81,10 +81,10 @@ while True:
             tag_input = input("Fetch specific HTML tag: ")
             fetch_tag_contents(tag_input, soup)
 
-            break_point = input("Do you wish to exit the program ? (y/n): ")
-            if break_point == "y" or break_point == "Y":
+            break_point = input("Do you wish to exit the program ? (y/n): ").lower()
+            if break_point == "y":
                 break
-            elif break_point == "n" or break_point == "N":
+            elif break_point == "n":
                 continue
             else:
                 print("Invalid Command !")
@@ -96,3 +96,9 @@ while True:
     except requests.RequestException:
         print("Error !")
         continue
+    except KeyboardInterrupt:
+        print("\nProgram interrupted, exiting...")
+        break
+    except EOFError:
+        print("\nInput process interrupted, exiting...")
+        break
