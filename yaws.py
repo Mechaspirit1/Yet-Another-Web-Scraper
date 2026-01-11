@@ -31,6 +31,7 @@ def fetch_tag_contents(tags, param):
         create_txt.write(file_txt)
         print("File created ! \n")
     elif file_option == 'n':
+        print("Operation halted \n")
         return
     
 def option_handling():
@@ -98,3 +99,6 @@ while True:
     except EOFError:
         print("\nInput process interrupted, exiting...")
         break
+    except ValueError:
+        print("Input only accepts numbers !")
+        continue
